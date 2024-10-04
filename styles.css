@@ -1,0 +1,286 @@
+:root {
+  /* ### Define colors of the project */
+  --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+  --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+  --Grayish-Blue: hsl(212, 23%, 69%);
+  --Light-Grayish-Blue: hsl(210, 46%, 95%);
+
+  /* ### Define padding and gap of the project */
+  --layout-gap: 1.5rem;
+  --layout-padding: 2rem;
+}
+
+/* ### Define Fonts */
+/* manrope-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200;
+  src: url("./Fonts/manrope-v15-latin-200.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* manrope-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./Fonts/manrope-v15-latin-regular.woff2") format("woff2");
+}
+/* manrope-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./Fonts/manrope-v15-latin-500.woff2") format("woff2");
+}
+/* manrope-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./Fonts/manrope-v15-latin-700.woff2") format("woff2");
+}
+
+/* ### Start styling  */
+body {
+  font-family: "Manrope", sans-serif;
+}
+main {
+  background-color: var(--Light-Grayish-Blue);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+article {
+  margin: var(--layout-gap);
+  box-shadow: 0 8px 20px hsl(195, 25%, 88%);
+}
+.article__image {
+  object-fit: cover;
+  object-position: center;
+  max-height: 12.5rem;
+  width: 100%;
+  border-radius: 5% 5% 0 0;
+}
+
+.article__content--layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: white;
+  padding: var(--layout-padding);
+  padding-bottom: 1.25rem;
+  border-radius: 0 0 5% 5%;
+}
+/* Adjusting height of the container with padding-bottom to fit pop-menu */
+.article__content--layout {
+  padding-bottom: -0.7rem !important;
+}
+.article__title {
+  padding-top: 0.3rem;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.012rem;
+  line-height: 1.5;
+  color: var(--Very-Dark-Grayish-Blue);
+}
+.article__description {
+  padding-top: 0.7rem;
+  font-weight: 500;
+  font-size: 0.82rem;
+  letter-spacing: 0.005rem;
+  line-height: 1.5;
+  color: var(--Desaturated-Dark-Blue);
+}
+.article__footer {
+  width: 100%;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.article__footer__avatar {
+  width: 2.43rem;
+  border-radius: 50%;
+}
+.article__footer__author__name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--Very-Dark-Grayish-Blue);
+}
+.article__footer__date {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--Grayish-Blue);
+}
+.article__footer__share {
+  margin-left: auto;
+}
+.article__footer__share__button {
+  margin-left: auto;
+  z-index: 10;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+#iconShare {
+  display: block;
+  width: 0.85rem;
+  height: 0.85rem;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+}
+/* ### Change color of the button and img in JavaScript when clicked  */
+.article__footer__share__button.active {
+  background-color: var(--Desaturated-Dark-Blue);
+}
+.article__footer__share__button.active #iconShare {
+  filter: invert(1) saturate(0.5) brightness(2);
+}
+
+/* ### Pop-up Menu will be activate in JavaScript when clicked  */
+.article__footer__share {
+  display: none;
+  flex-direction: row;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+.article__footer__share__pop-up-menu {
+  width: 100%;
+  border-radius: 0 0 1rem 1rem;
+  padding: 1.7rem var(--layout-padding);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  background-color: var(--Very-Dark-Grayish-Blue);
+  color: var(--Light-Grayish-Blue);
+}
+.article__footer__share__pop-up-menu__title {
+  opacity: 50%;
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+  font-weight: 200;
+  color: var(--Light-Grayish-Blue);
+}
+.article__footer__share__pop-up-menu img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.article__footer__share__pop-up-menu img:hover {
+  transform: scale(1.2);
+}
+
+/* ### Media Queries  */
+/* Tablet version */
+
+@media (min-width: 44.68rem) {
+  .article {
+    max-width: 45.65rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 1rem 1rem 1rem 1rem;
+  }
+  .article__header {
+    border-radius: 1rem 0 0 1rem;
+  }
+  .article__image {
+    max-height: 24rem;
+    max-width: 17.6rem;
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    border-radius: 1rem 0 0 1rem;
+  }
+  .article__content--layout {
+    border-radius: 0rem 1rem 1rem 0rem;
+    padding: 2.5rem;
+  }
+  .article__title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 0.012rem;
+    line-height: 1.3;
+    color: var(--Very-Dark-Grayish-Blue);
+  }
+  .article__description {
+    padding-top: 1.4rem;
+  }
+  .article__footer {
+    padding-top: 1.5rem;
+  }
+  .article__footer__share {
+    position: absolute;
+    right: 5rem;
+    bottom: 1.8rem;
+    width: 15rem;
+  }
+  .article__footer__share__pop-up-menu {
+    padding: 1.5rem var(--layout-padding);
+    position: relative;
+    width: 100%;
+    border-radius: 1rem 1rem 1rem 1rem;
+    transform: scale(0.8);
+    box-shadow: 0 8px 20px hsl(195, 25%, 88%);
+  }
+  /* right arrow creation */
+  .article__footer__share__pop-up-menu::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -2.01rem;
+    transform: translateY(-50%);
+    border-width: 1rem;
+    border-style: solid;
+    border-color: transparent transparent transparent
+      var(--Very-Dark-Grayish-Blue);
+  }
+}
+@media (min-width: 56rem) {
+  .article__footer__share {
+    position: absolute;
+    right: -4rem;
+    bottom: 6.8rem;
+    width: 15rem;
+  }
+  .article__footer__share__pop-up-menu {
+    position: relative;
+    width: 100%;
+    border-radius: 1rem 1rem 1rem 1rem;
+    transform: scale(1);
+    box-shadow: 0 8px 20px hsl(195, 25%, 88%);
+  }
+  /* down arrow creation */
+  .article__footer__share__pop-up-menu::after {
+    content: "";
+    position: absolute;
+    top: 120%;
+    right: 43%;
+    transform: translateY(-50%);
+    border-width: 1rem;
+    border-style: solid;
+    border-color: var(--Very-Dark-Grayish-Blue) transparent transparent
+      transparent;
+  }
+}
